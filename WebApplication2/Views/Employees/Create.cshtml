@@ -1,0 +1,55 @@
+﻿@model CreateEmployeeViewModel
+
+<h1>Create</h1>
+
+<h4>Employee</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NewEmployee.FullName" class="control-label"></label>
+                <input asp-for="NewEmployee.FullName" class="form-control" />
+                <span asp-validation-for="NewEmployee.FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewEmployee.EmailAdress" class="control-label"></label>
+                <input asp-for="NewEmployee.EmailAdress" class="form-control" />
+                <span asp-validation-for="NewEmployee.EmailAdress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewEmployee.DOB" class="control-label"></label>
+                <input asp-for="NewEmployee.DOB" class="form-control" />
+                <span asp-validation-for="NewEmployee.DOB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewEmployee.PhoneNumber" class="control-label"></label>
+                <input asp-for="NewEmployee.PhoneNumber" class="form-control" />
+                <span asp-validation-for="NewEmployee.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewEmployee.DeptId" class="control-label"></label>
+                <select asp-for="NewEmployee.DeptId" class="form-control">
+                    @foreach (var department in Model.Departments)
+                    {
+                        <option value="@department.Id">@department.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
